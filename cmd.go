@@ -3,10 +3,8 @@ package dexec
 import (
 	"bytes"
 	"errors"
+	docker "github.com/fsouza/go-dockerclient"
 	"io"
-	"io/ioutil"
-
-	"github.com/fsouza/go-dockerclient"
 )
 
 // Docker contains connection to Docker API.
@@ -89,10 +87,10 @@ func (c *Cmd) Start() error {
 		c.Stdin = empty
 	}
 	if c.Stdout == nil {
-		c.Stdout = ioutil.Discard
+		c.Stdout = io.Discard
 	}
 	if c.Stderr == nil {
-		c.Stderr = ioutil.Discard
+		c.Stderr = io.Discard
 	}
 
 	cmd := append([]string{c.Path}, c.Args...)
@@ -145,7 +143,9 @@ func (c *Cmd) Run() error {
 // standard error.
 //
 // Docker API does not have strong guarantees over ordering of messages. For instance:
-//     >&1 echo out; >&2 echo err
+//
+//	>&1 echo out; >&2 echo err
+//
 // may result in "out\nerr\n" as well as "err\nout\n" from this method.
 func (c *Cmd) CombinedOutput() ([]byte, error) {
 	if c.Stdout != nil {
