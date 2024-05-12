@@ -1,6 +1,8 @@
-module github.com/ahmetb/go-dexec
+module github.com/hysios/go-dexec
 
-go 1.22.2
+go 1.21
+
+toolchain go1.21.6
 
 require (
 	github.com/fsouza/go-dockerclient v1.11.0

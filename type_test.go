@@ -5,7 +5,7 @@ import (
 	osexec "os/exec"
 	"testing"
 
-	"github.com/ahmetb/go-dexec"
+	"github.com/hysios/go-dexec"
 )
 
 // cmd ensures interface compatibility between os/exec.Cmd and dexec.Cmd.

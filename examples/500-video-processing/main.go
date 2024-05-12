@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/ahmetb/go-dexec"
-	"github.com/fsouza/go-dockerclient"
 	"io/ioutil"
+
+	"github.com/fsouza/go-dockerclient"
+	"github.com/hysios/go-dexec"
 )
 
 const (
